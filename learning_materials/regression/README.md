@@ -1,7 +1,7 @@
-regression
+Regression
 ==============================
 
-Project Repo containing wcode for AI4I SUP-3: Regression module.
+Project Repo containing code for AI4I SUP-3: Regression module.
 
 Project Organization
 ------------
@@ -21,7 +21,7 @@ Project Organization
     │
     ├── notebooks          <- Jupyter notebooks. Naming convention is a number (for ordering),
     │                         the creator's initials, and a short `-` delimited description, e.g.
-    │                         `1.0-jqp-initial-data-exploration`.
+    │                         `1.0-lwt-initial-data-exploration`.
     │
     ├── references         <- Data dictionaries, manuals, and all other explanatory materials.
     │

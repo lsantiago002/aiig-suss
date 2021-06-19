@@ -3,6 +3,57 @@ Regression
 
 Project Repo containing code for AI4I SUP-3: Regression module.
 
+Setup
+------------
+Before you begin, ensure that all necessary dependencies are installed.
+
+You can do so via running the following command on your command prompt:
+```bash
+bin/install_deps_locally.sh
+```
+A virtual environment will be created and required dependencies in `requirements.txt` will be installed.
+
+
+Getting Started
+------------
+To train the models, you can run the following commands.
+
+`Linear Regression`:
+```python3
+python3 linear_regression.py
+```
+
+`K-Nearest Neighbors Regressor`:
+```python3
+python3 knn_regressor.py
+```
+
+Results will be displayed as follows:
+```
+Linear Regression:
+
+Training model on 10-Fold Cross Validation...
+CV Score: 0.68
+
+Results on Test Data
+====================
+RMSE: 44733.72
+R2 Score: 0.73911
+
+------------------------------
+
+K-Nearest Neighbors Regressor:
+
+Training model on 10-Fold Cross Validation...
+CV Score: 0.70
+
+Best parameters chosen: {'kneighborsregressor__n_neighbors': 4, 'kneighborsregressor__weights': 'distance'}
+Results on Test Data
+====================
+RMSE: 35010.05
+R2 Score: 0.84020
+```
+
 Project Organization
 ------------
 
@@ -21,17 +72,16 @@ Project Organization
     │
     ├── notebooks          <- Jupyter notebooks. Naming convention is a number (for ordering),
     │                         the creator's initials, and a short `-` delimited description, e.g.
-    │                         `1.0-lwt-initial-data-exploration`.
+    │                         `1.0-lwt-initial-exploratory-data-analysis`.
     │
     ├── references         <- Data dictionaries, manuals, and all other explanatory materials.
     │
     ├── reports            <- Generated analysis as HTML, PDF, LaTeX, etc.
     │   └── figures        <- Generated graphics and figures to be used in reporting
     │
-    ├── requirements.txt   <- The requirements file for reproducing the analysis environment, e.g.
-    │                         generated with `pip freeze > requirements.txt`
+    ├── requirements.txt   <- The requirements file for reproducing the analysis environment, e.g. generated with `pip freeze > requirements.txt`
     │
-    ├── setup.py           <- makes project pip installable (pip install -e .) so src can be imported
+    |
     ├── src                <- Source code for use in this project.
     │   ├── __init__.py    <- Makes src a Python module
     │   │
@@ -39,15 +89,11 @@ Project Organization
     │   │   └── make_dataset.py
     │   │
     │   ├── features       <- Scripts to turn raw data into features for modeling
-    │   │   └── build_features.py
+    │   │   └── preprocessing.py
     │   │
     │   ├── models         <- Scripts to train models and then use trained models to make
-    │   │   │                 predictions
-    │   │   ├── predict_model.py
-    │   │   └── train_model.py
-    │   │
-    │   └── visualization  <- Scripts to create exploratory and results oriented visualizations
-    │       └── visualize.py
+    │       │                 predictions
+    │       └── train_model.py
     │
     └── tox.ini            <- tox file with settings for running tox; see tox.readthedocs.io
 

@@ -10,7 +10,7 @@ from sklearn.linear_model import LinearRegression
 def main():
 
     # Retrieve data
-    file_path = 'data/interim/train_eda.csv'
+    file_path = 'data/interim/train_interim.csv'
     housing_prices = pd.read_csv(file_path)
 
     # Seperating predictors and target

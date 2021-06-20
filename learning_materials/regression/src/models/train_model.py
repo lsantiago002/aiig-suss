@@ -12,8 +12,7 @@ def train_model(predictors, target, model_class):
     y_pred = model_class.predict(X_test)
 
     # Cross-valiation score
-    print("Training model on 10-Fold Cross Validation...")
-    print(f"CV Score: {np.mean(cross_val_score(model_class, X_train, y_train, scoring='r2', cv=10)):.2f}\n")
+    print("Training model...")
 
     return model_class, y_pred, y_test
 

@@ -20,11 +20,13 @@ To train the models, you can run the following commands.
 
 `Linear Regression`:
 ```python3
+source .venv/bin/activate
 python3 linear_regression.py
 ```
 
 `K-Nearest Neighbors Regressor`:
 ```python3
+source .venv/bin/activate
 python3 knn_regressor.py
 ```
 

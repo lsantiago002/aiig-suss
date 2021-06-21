@@ -3,3 +3,4 @@ click==8.0.1
 pandas==1.2.4
 python-dotenv==0.17.1
 scikit_learn==0.24.2
+black==19.10b0

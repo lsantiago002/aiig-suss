@@ -1,7 +1,21 @@
 Regression
 ==============================
 
-Project Repo containing code for AI4I SUP-3: Regression module.
+Project Repo containing code for AI4I [SUP-3: Regression module](https://learn.aisingapore.org/courses/ai-for-industry-part-2/lessons/sup-3-regression/).
+
+In this lesson, you will continue building your knowledge about Regression by applying it to a new dataset, the Ames Housing dataset where you will attempt to predict housing prices.
+
+At the end of this lesson, you should know not only have a better grasp of key concepts but also have created Python scripts that you can reuse in the future to quickly build more Machine Learning projects.
+
+Overview
+------------
+During this course, you will exposed to the following:
+
+1. Practise conducting an *Exploratory Data Analysis* on the given dataset based on the knowledge acquired through [EDA-1: Introduction to Data Visualisation in Python](https://learn.datacamp.com/courses/introduction-to-data-visualization-with-seaborn).
+2. You will learn to develop a research methodology, which aims to help you answer some possible questions you have wrt.the dataset.
+3. After understanding your dataset, you will be exposed to developing a simple `Linear Regression` model outside of the Jupyter Notebook interface. This aims to solidify your existing python programming knowledge as well as leveraging in some shell scripting that you picked up in  [LATO-3: Introduction to Shell](https://learn.datacamp.com/courses/introduction-to-shell).
+4. In addition, you will learn the practise of usability in code by reusing code developed for the *Linear Regression* model, to modify and develop a `K-Nearest Neighbors Regressor` model.
+5. Beside simply developing a model, you will also be exposed to simple *hyperparameter* tuning – which aims to maximise the performance of your model.
 
 Setup
 ------------

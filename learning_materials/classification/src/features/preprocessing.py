@@ -4,6 +4,12 @@
 import numpy as np
 import pandas as pd
 
+from sklearn.pipeline import make_pipeline
+from sklearn.compose import ColumnTransformer
+from sklearn.preprocessing import OneHotEncoder, StandardScaler
+
+from imblearn.over_sampling import RandomOverSampler, SMOTE
+
 
 def remove_duplicate_info(data):
     """Convert duplicates information that can be found in other columns, into 'No'.
@@ -56,3 +62,31 @@ def simplify_value(data):
     )
 
     return data
+
+
+def retrieve_columns(X):
+    """Retrieve list of columns by data types.
+
+    Args:
+        X ([pd.DataFrame]): DataFrame.
+    """
+
+    num_features = [
+        key for key in dict(X.dtypes) if dict(X.dtypes)[key] in ["int64", "float64"]
+    ]
+    cat_features = ["Gender", "InternetService", "Contract", "PaymentMethod"]
+    bin_features = [col for col in X.columns if col not in cat_features + num_features]
+
+    # NOTE: refactor when necessarily to shift encoding to its individual function
+    for col in bin_features:
+        X[col] = X[col].map({"Yes": 1, "No": 0})
+
+    return num_features, cat_features, bin_features, X
+
+
+def create_sampler(type, config):
+
+    if type == "SMOTE":
+        return SMOTE(**config)
+    else:
+        return RandomOverSampler(**config)

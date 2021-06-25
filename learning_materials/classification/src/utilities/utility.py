@@ -32,7 +32,7 @@ def set_logger(log_path):
     return logger
 
 
-def load_data(file_path, target):
+def load_data(file_path, target, type="xlsx"):
     """
     Load data from specified file path
     ***I know this function is dumb, why we need another function? Just to demo unit test?
@@ -44,5 +44,8 @@ def load_data(file_path, target):
     Returns:
         [tuple]: feature matrix and target variable
     """
-    data = pd.read_excel(file_path, na_values=" ", engine="openpyxl")
+    if type == "xlsx":
+        data = pd.read_excel(file_path, na_values=" ", engine="openpyxl")
+    else:
+        data = pd.read_csv(file_path, index_col=0)
     return data.drop(target, axis=1), data[target]

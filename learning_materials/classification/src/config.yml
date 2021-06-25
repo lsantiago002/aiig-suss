@@ -5,10 +5,12 @@ etl:
   random_state: 42
 
 train:
-  processed_train: "data/train.csv"
-  ensemble_model: "RandomForestClassifier"
-  model_config: {n_estimators: 100, random_state: 42}
-  model_path: "model/rf_model.pkl"
+  processed_train: "data/interim/train.csv"
+  model: "KNeighborsClassifier"
+  model_config: {n_neighbors: 5}
+  model_path: "models/knn_classifier.pkl"
+  sampler: "SMOTE"
+  sampler_config: {random_state: 42}
 
 # train:
 #   processed_train: "data/train.csv"

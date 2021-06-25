@@ -70,6 +70,7 @@ def train(config_file):
     model = config["train"]["model"]
     model_config = config["train"]["model_config"]
     model_path = Path(config["train"]["model_path"])
+    transformer_path = Path(config["train"]["transformer_path"])
     sampler = config["train"]["sampler"]
     sampler_config = config["train"]["sampler_config"]
 
@@ -111,6 +112,12 @@ def train(config_file):
     logger.info(
         f"CV score: {cross_val_score(estimator=model, X=X_samp, y=y_samp, cv=5).mean()}"
     )
+
+    # persist transfomer
+    logger.info(f"-------------------Persist transformer-------------------")
+    transformer_path.parent.mkdir(parents=True, exist_ok=True)
+    with open(transformer_path, "wb") as f:
+        dump(preprocess, f)
 
     # persist model
     logger.info(f"-------------------Persist model-------------------")

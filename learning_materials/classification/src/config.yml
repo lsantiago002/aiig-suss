@@ -9,6 +9,7 @@ train:
   model: "KNeighborsClassifier"
   model_config: {n_neighbors: 5}
   model_path: "models/knn_classifier.pkl"
+  transformer_path: "models/transformer.pkl"
   sampler: "SMOTE"
   sampler_config: {random_state: 42}
 
@@ -19,7 +20,8 @@ train:
 #   model_path: "model/gb_model.pkl"
 
 predict:
-  model_path: "model/rf_model.pkl"
-  processed_test: "data/test.csv"
-  predicted_file: "data/predict.csv"
+  model_path: "models/knn_classifier.pkl"
+  transformer_path: "models/transformer.pkl"
+  processed_test: "data/interim/test.csv"
+  predicted_file: "data/processed/results.csv"
   export_result: True

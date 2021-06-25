@@ -31,7 +31,7 @@ def etl(config_file):
     """
 
     # configure logger
-    logger = set_logger("../log/etl.log")
+    logger = set_logger("log/etl.log")
 
     # load config from config file
     logger.info(f"Load config from {config_file}.")
@@ -80,11 +80,11 @@ def etl(config_file):
     # data wrangling
     features = remove_duplicate_info(features)  # replace duplicated info
     features = simplify_value(features)  # simplify column values
-    features = features[features["TotalCharges"].notnull()]
     logger.info("End ETL Process")
 
     # concat features and targets
     data = pd.concat([features, target], axis=1)
+    data = data[data["TotalCharges"].notnull()]
 
     # generating train/test data
     logger.info("-------------------Train test split & Export-------------------")

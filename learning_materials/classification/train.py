@@ -24,7 +24,7 @@ from sklearn.metrics import (
     roc_curve,
     auc,
 )
-from sklearn.model_selection import cross_val_score
+from sklearn.model_selection import cross_val_score, GridSearchCV
 from sklearn.preprocessing import OneHotEncoder, StandardScaler
 from sklearn.compose import ColumnTransformer
 
@@ -43,8 +43,10 @@ def instantiate_model(model, model_config):
     """
     if model in dir(sklearn.neighbors):
         return eval("sklearn.neighbors." + model)(**model_config)
+    if model in dir(sklearn.ensemble):
+        return eval("sklearn.ensemble." + model)(**model_config)
     else:
-        raise NameError(f"{model} is not in sklearn.neighbors")
+        raise NameError(f"{model} is not in sklearn.")
 
 
 @click.command()
@@ -66,6 +68,7 @@ def train(config_file):
     logger.info(f"Load config from {config_file}.")
     config = parse_config(config_file)
 
+    # model config
     processed_train = Path(config["train"]["processed_train"])
     model = config["train"]["model"]
     model_config = config["train"]["model_config"]
@@ -73,6 +76,11 @@ def train(config_file):
     transformer_path = Path(config["train"]["transformer_path"])
     sampler = config["train"]["sampler"]
     sampler_config = config["train"]["sampler_config"]
+
+    # tuning config
+    param_grid = config["tune"]["param_grid"]
+    scoring = config["tune"]["scoring"]
+    tune_model = config["tune"]["tune_model"]
 
     logger.info(f"Config: {config['train']}")
 
@@ -112,6 +120,17 @@ def train(config_file):
     logger.info(
         f"CV score: {cross_val_score(estimator=model, X=X_samp, y=y_samp, cv=5).mean()}"
     )
+
+    if tune_model:
+        logger.info("-------------------Tuning model-------------------")
+        logger.info(f"Tuning model using: {param_grid}")
+
+        model = GridSearchCV(
+            model, param_grid=param_grid, scoring=scoring, cv=5, n_jobs=-1
+        )
+        model.fit(X_samp, y_samp)
+        logger.info(f"Mean grid scores: {model.cv_results_['mean_test_score']}")
+        logger.info(f"Best parameters: {model.best_params_}")
 
     # persist transfomer
     logger.info(f"-------------------Persist transformer-------------------")

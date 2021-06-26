@@ -95,12 +95,12 @@ python3 train.py
 python3 predict.py
 ```
 
-You may execute each of the individual scripts separately if, for example, you simply want to train the model and not predict anything. As a result, you can just execute the `train` script::
+You may execute each of the individual scripts separately if, for example, you simply want to train the model and not predict anything. As a result, you can just execute the `train` script:
 ```bash
 python3 train.py
 ```
 
-In addition to the commands listed above, a shell script is provided that will execute the complete project for you::
+In addition to the commands listed above, a shell script is provided that will execute the complete project for you:
 ```bash
 ./main.sh
 ```

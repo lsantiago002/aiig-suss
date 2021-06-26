@@ -4,23 +4,34 @@ etl:
   test_size: 0.3
   random_state: 42
 
+# train:
+#   processed_train: "data/interim/train.csv"
+#   model: "KNeighborsClassifier"
+#   model_config: {n_neighbors: 5}
+#   model_path: "models/knn_classifier.pkl"
+#   transformer_path: "models/transformer.pkl"
+#   sampler: "SMOTE"
+#   sampler_config: {random_state: 42}
+
 train:
   processed_train: "data/interim/train.csv"
-  model: "KNeighborsClassifier"
-  model_config: {n_neighbors: 5}
-  model_path: "models/knn_classifier.pkl"
+  model: "RandomForestClassifier"
+  model_config: {random_state: 42}
+  model_path: "models/rf_classifier.pkl"
   transformer_path: "models/transformer.pkl"
   sampler: "SMOTE"
   sampler_config: {random_state: 42}
 
-# train:
-#   processed_train: "data/train.csv"
-#   ensemble_model: "GradientBoostingClassifier"
-#   model_config: {n_estimators: 100, random_state: 42}
-#   model_path: "model/gb_model.pkl"
+tune:
+  param_grid: {n_estimators: [200, 300, 400, 500],
+               max_depth: [3, 4, 5, 6],
+               min_samples_leaf: [0.04, 0.06, 0.08],
+               max_features: [0.2, 0.4, 0.6, 0.8]}
+  scoring: "balanced_accuracy"
+  tune_model: True
 
 predict:
-  model_path: "models/knn_classifier.pkl"
+  model_path: "models/rf_classifier.pkl"
   transformer_path: "models/transformer.pkl"
   processed_test: "data/interim/test.csv"
   predicted_file: "data/processed/results.csv"

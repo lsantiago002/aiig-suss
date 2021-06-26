@@ -124,7 +124,6 @@ weighted avg    0.77771   0.71374   0.72785      2110
 
 2021-06-26 21:00:31,910 : INFO : src.utilities.utility : Export prediction to : data/processed/results.csv
 ```
-A classification report is created, detailing the model's overall *Accuracy*, *F-measure*, *Precision*, and *Recall*.
 
 --------
 

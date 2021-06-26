@@ -61,15 +61,17 @@ def predict(config_file):
     logger.info(f"y: {y.shape}")
 
     # transform test dataset
-    num_features, cat_features, _, X = retrieve_columns(X)
+    _, _, _, X = retrieve_columns(X)
     with open(transformer_path, "rb") as f:
         transformer = load(f)
-    preprocess_data = transformer.fit_transform(X)
+    preprocess_data = transformer.transform(X)
 
     # make prediction and evaluate
     logger.info(f"-------------------Predict and evaluate-------------------")
     y_pred = trained_model.predict(preprocess_data)
-    logger.info(f"Classification report: \n {classification_report(y, y_pred)}")
+    logger.info(
+        f"Classification report: \n {classification_report(y, y_pred, digits=5)}"
+    )
     output = pd.DataFrame(y)
     output["prediction"] = y_pred
     if export_result:

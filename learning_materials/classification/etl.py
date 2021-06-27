@@ -9,6 +9,7 @@ Usage:
 
 import logging
 from pathlib import Path
+from datetime import datetime
 
 import click
 import pandas as pd
@@ -31,7 +32,7 @@ def etl(config_file):
     """
 
     # configure logger
-    logger = set_logger("log/etl.log")
+    logger = set_logger(f"log/etl-{datetime.today().strftime('%b-%d-%Y')}.log")
 
     # load config from config file
     logger.info(f"Load config from {config_file}.")

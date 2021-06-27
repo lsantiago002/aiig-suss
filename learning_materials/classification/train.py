@@ -7,6 +7,7 @@ Usage:
 
 import logging
 from pathlib import Path
+from datetime import datetime
 
 from pickle import dump
 
@@ -16,10 +17,6 @@ import sklearn
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.metrics import (
     confusion_matrix,
-    accuracy_score,
-    precision_score,
-    recall_score,
-    f1_score,
     classification_report,
     roc_curve,
     auc,
@@ -28,25 +25,9 @@ from sklearn.model_selection import cross_val_score, GridSearchCV
 from sklearn.preprocessing import OneHotEncoder, StandardScaler
 from sklearn.compose import ColumnTransformer
 
+from src.models.train_model import instantiate_model
 from src.features.preprocessing import make_pipeline, create_sampler, retrieve_columns
 from src.utilities.utility import load_data, parse_config, set_logger
-
-
-def instantiate_model(model, model_config):
-    """
-    initiate model using eval, implement with defensive programming
-    Args:
-        ensemble_model [str]: name of the ensemble model
-
-    Returns:
-        [sklearn.model]: initiated model
-    """
-    if model in dir(sklearn.neighbors):
-        return eval("sklearn.neighbors." + model)(**model_config)
-    if model in dir(sklearn.ensemble):
-        return eval("sklearn.ensemble." + model)(**model_config)
-    else:
-        raise NameError(f"{model} is not in sklearn.")
 
 
 @click.command()
@@ -62,7 +43,7 @@ def train(config_file):
     """
 
     # configure logger
-    logger = set_logger("log/train.log")
+    logger = set_logger(f"log/train-{datetime.today().strftime('%b-%d-%Y')}.log")
 
     # load config from config file
     logger.info(f"Load config from {config_file}.")
@@ -129,7 +110,7 @@ def train(config_file):
             model, param_grid=param_grid, scoring=scoring, cv=5, n_jobs=-1
         )
         model.fit(X_samp, y_samp)
-        logger.info(f"Mean grid scores: {model.cv_results_['mean_test_score']}")
+        logger.info(f"Best grid {scoring} score: {model.best_score_}")
         logger.info(f"Best parameters: {model.best_params_}")
 
     # persist transfomer

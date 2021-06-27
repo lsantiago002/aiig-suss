@@ -7,6 +7,7 @@ Usage:
 
 import logging
 from pathlib import Path
+from datetime import datetime
 
 from pickle import load
 
@@ -35,7 +36,7 @@ def predict(config_file):
     """
 
     # configure logger
-    logger = set_logger("log/predict.log")
+    logger = set_logger(f"log/predict-{datetime.today().strftime('%b-%d-%Y')}.log")
 
     # load config from config file
     logger.info(f"Load config from {config_file}.")

@@ -80,6 +80,49 @@ python3 -m venv .venv
 source .venv/bin/activate
 pip3 install -r requirements.txt
 ```
+You can define the project's settings before running the appropriate scripts via `src/config.yml`:
+```
+etl:
+  raw_data_file: "data/raw/Telco_customer_churn.xlsx"
+  processed_path: "data/interim/"
+  test_size: 0.3
+  random_state: 42
+
+# Training Decision Tree
+train:
+  processed_train: "data/interim/train.csv"
+  model: "DecisionTreeClassifier"
+  model_config: {random_state: 42}
+  model_path: "models/dt_classifier.pkl"
+  transformer_path: "models/transformer.pkl"
+  sampler: "SMOTE"
+  sampler_config: {random_state: 42}
+
+# Tune Decision Tree
+tune:
+  param_grid: {max_depth: [3, 4, 5, 6],
+               min_samples_leaf: [0.04, 0.06, 0.08],
+               max_features: [0.2, 0.4, 0.6, 0.8]}
+  scoring: "balanced_accuracy"
+  tune_model: True
+
+predict:
+  model_path: "models/dt_classifier.pkl"
+  transformer_path: "models/transformer.pkl"
+  processed_test: "data/interim/test.csv"
+  predicted_file: "data/processed/results.csv"
+  export_result: True
+```
+Changes must be made to the following fields in order to apply a new classification algorithm for training:
+
+1. `model` – Model to be used for training.
+2. `model_path` – Path to save your model, usually in under `models/{model}_classifier.pkl`
+
+If hyperparameter tuning is required:
+
+1. `param_grid` – Parameters settings to be evaluated in Grid Search.
+2. `scoring` – Specify scoring strategy used in Grid Search evaluation.
+3. `tune_model` – Specify as True, if tuning is required.
 
 Usage
 ------------

@@ -70,6 +70,7 @@ bin/install_deps_locally.sh
 ```
 A virtual environment will be created and required dependencies in `requirements.txt` will be installed.
 
+<<<<<<< HEAD
 You may also start by creating a `virtualenv`. Activate the virtualenv and `pip install` the packages and dependencies after that.
 
 **Mac:**
@@ -80,7 +81,12 @@ pip install -r requirements.txt
 ```
 **Windows:**
 ```
+pip install virtualenv
+py -m virtualenv .env
+source env/Scripts/activate
+pip install -r requirements.txt
 ```
+=======
 
 Getting Started
 ------------

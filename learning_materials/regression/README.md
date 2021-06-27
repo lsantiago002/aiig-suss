@@ -71,6 +71,7 @@ bin/install_deps_locally.sh
 A virtual environment will be created and required dependencies in `requirements.txt` will be installed.
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 You may also start by creating a `virtualenv`. Activate the virtualenv and `pip install` the packages and dependencies after that.
 
 **Mac:**
@@ -87,6 +88,50 @@ source env/Scripts/activate
 pip install -r requirements.txt
 ```
 =======
+=======
+For Windows users:
+------------
+The 'Setup' above have to be done differently. 
+1. Open Git Bash terminal. 
+2. ```bash
+    cd
+    ``` 
+    to your regression folder
+3. Execute the following code to clone the repo:
+    ```bash
+    git clone https://github.com/wtlow003/aiig-suss
+    ```
+    Do this only if you haven't downloaded or cloned this repo.
+    Else, follow the next step.
+
+Caution:
+If you try to run the code line:
+```bash
+./bin/install_deps_locally.sh
+```
+from the said Setup above, (it does not work at least for me-Loreine) you may get this error:
+```bash
+Python was not found; run without arguments to install from the Microsoft Store,
+ or disable this shortcut from Settings > Manage App Execution Aliases.
+```
+You can refer to this: https://stackoverflow.com/a/48588878 for solution, though the error is very clear.
+
+4. Before you can do "Getting Started" below, you need to install virtual env using the following command:
+```bash
+pip install virtualenv
+```
+5. Create your virtual env:
+```bash 
+py -m virtualenv .env
+```
+6. Activate the virtual env:
+```bash 
+source env/Scripts/activate
+```
+7. Install the requirements for this project.
+```bash
+pip install -r requirements.txt
+```
 
 Getting Started
 ------------

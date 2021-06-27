@@ -72,13 +72,13 @@ A virtual environment will be created and required dependencies in `requirements
 
 You may also start by creating a `virtualenv`. Activate the virtualenv and `pip install` the packages and dependencies after that.
 
-Mac:
+**Mac:**
 ```
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
 ```
-Windows:
+**Windows:**
 ```
 ```
 

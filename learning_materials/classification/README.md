@@ -128,7 +128,7 @@ Usage
 ------------
 To go through the entire project, you must run the project in three parts:
 
-1. Extract, Transform, Load (ETL) of raw data
+1. Extracting, Transforming, Loading (ETL) of raw data
 2. Training of model
 3. Predicting results using trained model
 

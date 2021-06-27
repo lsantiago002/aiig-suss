@@ -116,7 +116,7 @@ predict:
 Changes must be made to the following fields in order to apply a new classification algorithm for training:
 
 1. `model` – Model to be used for training.
-2. `model_path` – Path to save your model, usually in under `models/{model}_classifier.pkl`
+2. `model_path` – Path to save your model, usually under `models/{model}_classifier.pkl`
 
 If hyperparameter tuning is required:
 

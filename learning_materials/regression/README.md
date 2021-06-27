@@ -17,59 +17,6 @@ During this course, you will exposed to the following:
 4. In addition, you will learn the practise of usability in code by reusing code developed for the *Linear Regression* model, to modify and develop a `K-Nearest Neighbors Regressor` model.
 5. Beside simply developing a model, you will also be exposed to simple *hyperparameter* tuning – which aims to maximise the performance of your model.
 
-Setup
-------------
-Before you begin, ensure that all necessary dependencies are installed.
-
-You can do so via running the following command on your command prompt:
-```bash
-bin/install_deps_locally.sh
-```
-A virtual environment will be created and required dependencies in `requirements.txt` will be installed.
-
-
-Getting Started
-------------
-To train the models, you can run the following commands.
-
-`Linear Regression`:
-```bash
-source .venv/bin/activate
-python3 linear_regression.py
-```
-
-`K-Nearest Neighbors Regressor`:
-```bash
-source .venv/bin/activate
-python3 knn_regressor.py
-```
-
-Results will be displayed as follows:
-```
-Linear Regression:
-
-Training model on 10-Fold Cross Validation...
-CV Score: 0.68
-
-Results on Test Data
-====================
-RMSE: 44733.72
-R2 Score: 0.73911
-
-------------------------------
-
-K-Nearest Neighbors Regressor:
-
-Training model on 10-Fold Cross Validation...
-CV Score: 0.70
-
-Best parameters chosen: {'kneighborsregressor__n_neighbors': 4, 'kneighborsregressor__weights': 'distance'}
-Results on Test Data
-====================
-RMSE: 35010.05
-R2 Score: 0.84020
-```
-
 Project Organization
 ------------
 
@@ -113,6 +60,67 @@ Project Organization
     │
     └── tox.ini            <- tox file with settings for running tox; see tox.readthedocs.io
 
+Setup
+------------
+Before you begin, ensure that all necessary dependencies are installed.
+
+You can do so via running the following command on your command prompt:
+```bash
+bin/install_deps_locally.sh
+```
+A virtual environment will be created and required dependencies in `requirements.txt` will be installed.
+
+You may also start by creating a `virtualenv`. Activate the virtualenv and `pip install` the packages and dependencies after that.
+
+Mac:
+```
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+```
+Windows:
+```
+```
+
+Getting Started
+------------
+To train the models, you can run the following commands.
+
+`Linear Regression`:
+```bash
+python3 linear_regression.py
+```
+
+`K-Nearest Neighbors Regressor`:
+```bash
+python3 knn_regressor.py
+```
+
+Results will be displayed as follows:
+```
+Linear Regression:
+
+Training model on 10-Fold Cross Validation...
+CV Score: 0.68
+
+Results on Test Data
+====================
+RMSE: 44733.72
+R2 Score: 0.73911
+
+------------------------------
+
+K-Nearest Neighbors Regressor:
+
+Training model on 10-Fold Cross Validation...
+CV Score: 0.70
+
+Best parameters chosen: {'kneighborsregressor__n_neighbors': 4, 'kneighborsregressor__weights': 'distance'}
+Results on Test Data
+====================
+RMSE: 35010.05
+R2 Score: 0.84020
+```
 
 --------
 
